@@ -1,14 +1,16 @@
 NAME_PS = push_swap
 
 INCLUDES = ./includes
-HEADER = $(INCLUDES)/ft_printf.h
+HEADER = $(INCLUDES)/push_swap.h
 
 # dirs
 DIR_S = push_swap
-DIR_O = objs_ps
+DIR_O = objs
 
 # files
-C_FILES = 
+C_FILES = ft_atoi.c\
+		stack_operations.c\
+		string_parse.c\
 
 SRCS_PS = $(addprefix $(DIR_S)/,$(C_FILES))
 OBJS = $(addprefix $(DIR_O)/,$(C_FILES:.c=.o))
@@ -23,11 +25,9 @@ all: $(NAME_PS)
 
 $(NAME_PS): $(DIR_O) $(OBJS)
 	$(CC) $(FLAGS) main.c -I $(INCLUDES) -o $(NAME)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
 
-$(DIR_O)
-	mkdir -p objs_ps
+$(DIR_O):
+	mkdir -p objs
 
 $(DIR_O)/%.o: $(DIR_S)/%.c $(HEADER)
 	$(CC) $(FLAGS) -I $(INCLUDES) -c ./$< -o $@

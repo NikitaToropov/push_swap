@@ -30,13 +30,15 @@ int		main(int c, char **v)
 {
 	t_stack		*a;
 	t_stack		*b;
-	size_t		len;
 	int			*arr;
+	char		*ops;
 
-	// ft_check_the_valid(v[1]);
-	if (!(len = ft_len_int_arr(v[1])))
+	if (!(arr = ft_int_arr(v[1], len)))
+	{
+		write(1, "Error\n", 6);
 		return (0);
-	arr = ft_int_arr(v[1], len);
+	}
 	ft_make_two_stacks(&a, &b, arr, len);
+	ops = ft_sorting(a, b);
 	return (0);
 }
