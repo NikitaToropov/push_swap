@@ -1,34 +1,73 @@
 #include "push_swap.h"
 
-void	ft_one_step_sort(t_stack *a, t_stack *b)
+static void		ft_one_step_sort(t_stack *a, t_stack *b)
 {
-	if (a->min == a->pos)
+	size_t		i;
+
+	if (a->min == a->pos && a->pos > 1)
 	{
 		ft_push_in_first(b, a);
 	}
-	else if (a->max == a->pos)
+	else if (a->min == 0)
 	{
-		ft_rev_rotate(a);
+		printf("ra\n");
+		ft_rotate(a);
 	}
 	else if (a->pos > 0 && a->val[a->pos] > a->val[a->pos - 1])
 	{
-		swft_swap(a);
+		printf("sa\n");
+		ft_swap(a);
 	}
-	// else if (a->min && a->min < (a->pos - a->max) && a->min < (a->max + 1))
-	// {
-	// 	ft_;
-	// }
+	else
+	{
+		printf("rra\n");
+		ft_rev_rotate(a);
+	}
+	i = 0;
+	while (i < a->size)
+	{
+		printf("%-3zu    |%i   %i\n", i, a->val[i], b->val[i]);
+		i++;
+	}
+	printf("-------|--------------------------------------\n");
+
+	printf("max  = |%-4zu%zu\n", a->max, b->max);
+	printf("min  = |%-4zu%zu\n", a->min, b->min);
+	printf("size = |%-4zu%zu\n", a->size, b->size);
+	printf("pos  = |%-4zu%zu\n", a->pos, b->pos);
+	printf("===========================================\n\n");
 }
 
 void	ft_sorting(t_stack *a, t_stack *b)
 {
-	if (a->min == a->pos)
-	// rotate;
-	// rev_rotate;
-	while (!ft_it_is_sorted(a->val, a->pos))
+	size_t		i;
+
+	i = 0;
+	while (i < a->size)
+	{
+		printf("       %i   %i\n", a->val[i], b->val[i]);
+		i++;
+	}
+	printf("max  = |%-4zu%zu\n", a->max, b->max);
+	printf("min  = |%-4zu%zu\n", a->min, b->min);
+	printf("size = |%-4zu%zu\n", a->size, b->size);
+	printf("pos  = |%-4zu%zu\n", a->pos, b->pos);
+	printf("\n===========================================\n");
+	printf("\n\n-------------------START------------------\n");
+	while (a->pos && !ft_it_is_sorted(a->val, a->pos))
 	{
 		ft_one_step_sort(a, b);
 	}
-	if (a->val[a->pos] == a->val[a->pos - 1])
-	if (a->min == (a->pos - 1) || a->min == 0)
+
+	i = b->pos + 1;
+	while (i)
+	{
+		ft_push_in_first(a, b);
+		i--;
+	}
+	i = 0;
+	while (i < a->size)
+	{
+		printf("%i\n", a->val[i++]);
+	}
 }

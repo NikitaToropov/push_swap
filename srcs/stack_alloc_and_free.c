@@ -18,7 +18,7 @@ void	ft_make_two_stacks(t_stack **a, t_stack **b, int *arr, size_t len)
 		exit (1);
 	(*a)->val = arr;
 	(*a)->size = len;
-	(*a)->pos = len;
+	(*a)->pos = len - 1;
 	ft_find_max_min(*a);
 
 	(*b)->size = len;

@@ -20,7 +20,7 @@ int		main(int c, char **v)
 			return (0);
 		}
 		ft_make_two_stacks(&a, &b, arr, len);
-		// ft_sorting(a, b);
+		ft_sorting(a, b);
 		ft_free_stacks(&a, &b);
 	}
 	return (0);

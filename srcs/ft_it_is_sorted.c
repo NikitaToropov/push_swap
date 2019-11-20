@@ -6,9 +6,7 @@ int		ft_it_is_sorted(int *arr, size_t len)
 	size_t		i;
 
 	i = 1;
-	if (!len)
-		return (0);
-	while (i < len)
+	while (i <= len)
 	{
 		if (arr[i] > arr[i - 1])
 			return (0);
@@ -25,7 +23,7 @@ int		ft_it_is_rev_sorted(int *arr, size_t len)
 	i = 1;
 	if (!len)
 		return (0);
-	while (i < len)
+	while (i <= len)
 	{
 		if (arr[i] < arr[i - 1])
 		{

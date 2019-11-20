@@ -41,6 +41,8 @@ int					ft_it_is_sorted(int *arr, size_t len);
 // max on the top (for b)
 int					ft_it_is_rev_sorted(int *arr, size_t len);
 
+void		ft_sorting(t_stack *a, t_stack *b);
+
 // void				ft_sorting(t_stack *a, t_stack *b);
 
 
