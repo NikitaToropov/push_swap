@@ -6,7 +6,6 @@ int		main(int c, char **v)
 	t_stack		*b;
 	int			*arr;
 	size_t		len;
-	// char		*ops;
 
 	if (c == 2)
 	{
@@ -15,8 +14,14 @@ int		main(int c, char **v)
 			write(1, "Error\n", 6);
 			return (0);
 		}
+		if (ft_it_is_sorted(arr, len))
+		{
+			free(arr);
+			return (0);
+		}
 		ft_make_two_stacks(&a, &b, arr, len);
+		// ft_sorting(a, b);
+		ft_free_stacks(&a, &b);
 	}
-	// ops = ft_sorting(a, b);
 	return (0);
 }

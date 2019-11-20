@@ -1,4 +1,5 @@
 NAME_PS = push_swap
+# NAME_CH = checker
 
 INCLUDES = ./includes
 HEADER = $(INCLUDES)/push_swap.h
@@ -9,9 +10,12 @@ DIR_O = objs
 
 # files
 C_FILES = ft_atoi.c\
-		stack_operations.c\
+		ft_it_is_sorted.c\
 		string_parse.c\
 		stack_alloc_and_free.c\
+		op_string.c\
+		ft_push_in_first.c\
+		stack_operations.c\
 
 SRCS_PS = $(addprefix $(DIR_S)/,$(C_FILES))
 OBJS = $(addprefix $(DIR_O)/,$(C_FILES:.c=.o))
@@ -24,8 +28,8 @@ FLAGS = -Wall -Werror -Wextra
 
 all: $(NAME_PS)
 
-$(NAME_PS): $(DIR_O) $(OBJS)
-	$(CC) $(FLAGS) main.c $(OBJS) -I $(INCLUDES) -o $@
+$(NAME_PS): $(DIR_O) $(OBJS) push_swap.c
+	$(CC) $(FLAGS) -g push_swap.c $(OBJS) -I $(INCLUDES) -o $@
 
 $(DIR_O):
 	mkdir -p objs
@@ -37,6 +41,6 @@ clean:
 	rm -rf $(DIR_O)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME_PS)
 
 re: fclean all

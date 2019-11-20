@@ -43,9 +43,10 @@ static size_t	ft_len_int_arr(char *str)
 			str++;
 		if (*str && (*str < '0' || *str > '9'))
 			return (0);
+		if (*str >= '0' && *str <= '9')
+			i++;
 		while (*str >= '0' && *str <= '9')
 			str++;
-		i++;
 	}
 	return (i);
 }
@@ -55,6 +56,7 @@ int				*ft_int_arr(char *str, size_t *len)
 	int			*arr;
 	// size_t		len;
 	size_t		i;
+
 
 	if (!(*len = ft_len_int_arr(str)) ||
 	(!(arr = (int*)malloc(sizeof(int) * *len))))
@@ -67,7 +69,10 @@ int				*ft_int_arr(char *str, size_t *len)
 		if (((arr[i] = ft_atoi(str)) == -1 && *str != '-') ||
 		(arr[i] == 0 && *str == '-'))
 			return (ft_free_and_return_null(&arr));
-		while (*str && ft_is_it_space(*str))
+		else
+			i++;
+		
+		while (*str && !ft_is_it_space(*str))
 			str++;
 	}
 	if (ft_dup_detector(arr, *len))

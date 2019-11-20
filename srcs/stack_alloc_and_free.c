@@ -1,13 +1,13 @@
 #include "push_swap.h"
 
-void	ft_free_stacks(t_stack *a, t_stack *b)
+void	ft_free_stacks(t_stack **a, t_stack **b)
 {
-	if (a->val)
-		free(a->val);
-	if (b->val)
-		free(b->val);
-	free (a);
-	free (b);
+	if ((*a)->val)
+		free((*a)->val);
+	if ((*b)->val)
+		free((*b)->val);
+	free (*a);
+	free (*b);
 }
 
 void	ft_make_two_stacks(t_stack **a, t_stack **b, int *arr, size_t len)
@@ -18,10 +18,12 @@ void	ft_make_two_stacks(t_stack **a, t_stack **b, int *arr, size_t len)
 		exit (1);
 	(*a)->val = arr;
 	(*a)->size = len;
-	(*a)->pos = 0;
+	(*a)->pos = len;
+	ft_find_max_min(*a);
 
 	(*b)->size = len;
 	(*b)->pos = 0;
+	ft_find_max_min(*b);
 	while (len--)
 		(*b)->val[len] = 0;
 }
