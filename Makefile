@@ -4,13 +4,14 @@ INCLUDES = ./includes
 HEADER = $(INCLUDES)/push_swap.h
 
 # dirs
-DIR_S = push_swap
+DIR_S = srcs
 DIR_O = objs
 
 # files
 C_FILES = ft_atoi.c\
 		stack_operations.c\
 		string_parse.c\
+		stack_alloc_and_free.c\
 
 SRCS_PS = $(addprefix $(DIR_S)/,$(C_FILES))
 OBJS = $(addprefix $(DIR_O)/,$(C_FILES:.c=.o))
@@ -24,7 +25,7 @@ FLAGS = -Wall -Werror -Wextra
 all: $(NAME_PS)
 
 $(NAME_PS): $(DIR_O) $(OBJS)
-	$(CC) $(FLAGS) main.c -I $(INCLUDES) -o $(NAME)
+	$(CC) $(FLAGS) main.c $(OBJS) -I $(INCLUDES) -o $@
 
 $(DIR_O):
 	mkdir -p objs

@@ -33,11 +33,17 @@ typedef struct		s_stack
 int					ft_atoi(const char *str);
 // void				ft_sorting(t_stack *a, t_stack *b);
 
+// memory manipulations
+void	ft_free_stacks(t_stack *a, t_stack *b);
+void	ft_make_two_stacks(t_stack **a, t_stack **b, int *arr, size_t len);
+
+
+// stack manipulations
 int					ft_push_in_first(t_stack *a, t_stack *b);
 void				ft_swap(int *a, int *b);
 int					ft_rev_rotate(t_stack *s);
 int					ft_rotate(t_stack *s);
 
-int					*ft_int_arr(char *str);
+int					*ft_int_arr(char *str, size_t *len);
 
 #endif

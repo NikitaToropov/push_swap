@@ -39,38 +39,38 @@ static size_t	ft_len_int_arr(char *str)
 	{
 		while (ft_is_it_space(*str))
 			str++;
-		if (!(*str) || (*str < '0' || *str > '9'))
+		if (*str == '+' || *str == '-')
+			str++;
+		if (*str && (*str < '0' || *str > '9'))
 			return (0);
-		while (*str && *str < 9 && *str > 13 &&
-		*str != 32 && *str != '-' && *str != '+')
+		while (*str >= '0' && *str <= '9')
 			str++;
 		i++;
 	}
 	return (i);
 }
 
-int				*ft_int_arr(char *str)
+int				*ft_int_arr(char *str, size_t *len)
 {
 	int			*arr;
-	size_t		len;
+	// size_t		len;
 	size_t		i;
 
-	if (!(len = ft_len_int_arr(str)))
+	if (!(*len = ft_len_int_arr(str)) ||
+	(!(arr = (int*)malloc(sizeof(int) * *len))))
 		return (NULL);
-	if (!(arr = (int*)malloc(sizeof(int) * len)))
-		exit (1);
 	i = 0;
-	while (*str && i < len)
+	while (*str && i < *len)
 	{
 		while (ft_is_it_space(*str))
 			str++;
 		if (((arr[i] = ft_atoi(str)) == -1 && *str != '-') ||
 		(arr[i] == 0 && *str == '-'))
-			return (ft_free_and_return(&arr));
+			return (ft_free_and_return_null(&arr));
 		while (*str && ft_is_it_space(*str))
 			str++;
 	}
-	if (ft_dup_detector(arr, len))
+	if (ft_dup_detector(arr, *len))
 		return (ft_free_and_return_null(&arr));
 	return (arr);
 }
