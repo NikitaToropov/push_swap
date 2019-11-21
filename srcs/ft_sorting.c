@@ -83,9 +83,39 @@ void	ft_sorting(t_stack *a, t_stack *b)
 		printf("%i\n", a->val[i++]);
 	}
 	i = 0;
+	printf("______________________________________________\n");
+
 	while (i <= ops->pos)
 	{
-		printf("%hhi ", ops->str[i++]);
+		if (ops->str[i] == SA)
+			printf("SA\n");
+		if (ops->str[i] == SB)
+			printf("SB\n");
+		if (ops->str[i] == SS)
+			printf("SS\n");
+
+		if (ops->str[i] == PA)
+			printf("PA\n");
+		if (ops->str[i] == PB)
+			printf("PB\n");
+
+		if (ops->str[i] == RA)
+			printf("RA\n");
+		if (ops->str[i] == RB)
+			printf("RB\n");
+		if (ops->str[i] == RR)
+			printf("RR\n");
+
+		if (ops->str[i] == RRA)
+			printf("RRA\n");
+		if (ops->str[i] == RRB)
+			printf("RRB\n");
+		if (ops->str[i] == RRR)
+			printf("RRR\n");
+		i++;
+		// printf("%hhi ", ops->str[i++]);
 	}
+	printf("______________________________________________\n");
+	printf("num of operations = %i\n", i);
 	ft_free_ops(&ops);
 }
