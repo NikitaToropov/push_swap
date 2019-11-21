@@ -16,7 +16,7 @@ int		ft_swap(t_stack *s)
 // 213 -> 321
 int			ft_rev_rotate(t_stack *s)
 {
-	size_t 		i;
+	int 		i;
 	int			tmp;
 
 	if (s->pos)
@@ -35,7 +35,7 @@ int			ft_rev_rotate(t_stack *s)
 // 132 -> 321
 int			ft_rotate(t_stack *s)
 {
-	size_t 		i;
+	int 		i;
 	int			tmp;
 
 	if (s->pos)

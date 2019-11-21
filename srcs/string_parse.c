@@ -6,10 +6,10 @@ static int		*ft_free_and_return_null(int **i)
 	return (NULL);
 }
 
-static int		ft_dup_detector(int *arr, size_t len)
+static int		ft_dup_detector(int *arr, int len)
 {
-	size_t		a;
-	size_t		b;
+	int		a;
+	int		b;
 	
 	a = 0;
 	while (a < len)
@@ -23,9 +23,9 @@ static int		ft_dup_detector(int *arr, size_t len)
 	return (0);
 }
 
-static size_t	ft_len_int_arr(char *str)
+static int	ft_len_int_arr(char *str)
 {
-	size_t		i;
+	int		i;
 
 	i = 0;
 	while (*str)
@@ -44,11 +44,11 @@ static size_t	ft_len_int_arr(char *str)
 	return (i);
 }
 
-int				*ft_int_arr(char *str, size_t *len)
+int				*ft_int_arr(char *str, int *len)
 {
 	int			*arr;
-	// size_t		len;
-	size_t		i;
+	// int		len;
+	int			i;
 
 
 	if (!(*len = ft_len_int_arr(str)) ||

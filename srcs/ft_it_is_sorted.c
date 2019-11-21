@@ -1,9 +1,9 @@
 #include "push_swap.h"
 
 // min on the top (for a)
-int		ft_it_is_sorted(int *arr, size_t len)
+int		ft_it_is_sorted(int *arr, int len)
 {
-	size_t		i;
+	int		i;
 
 	i = 1;
 	while (i <= len)
@@ -16,9 +16,9 @@ int		ft_it_is_sorted(int *arr, size_t len)
 }
 
 // max on the top (for b)
-int		ft_it_is_rev_sorted(int *arr, size_t len)
+int		ft_it_is_rev_sorted(int *arr, int len)
 {
-	size_t		i;
+	int		i;
 
 	i = 1;
 	if (!len)

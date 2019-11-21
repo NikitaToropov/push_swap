@@ -5,7 +5,7 @@ int		main(int c, char **v)
 	t_stack		*a;
 	t_stack		*b;
 	int			*arr;
-	size_t		len;
+	int			len;
 
 	if (c == 2)
 	{

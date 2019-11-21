@@ -4,12 +4,11 @@ static int		ft_pop(t_stack *s)
 {
 	int		r;
 
-	if (s->val[s->pos])
+	if (s->pos >= 0)
 	{
 		r = s->val[s->pos];
 		s->val[s->pos] = 0;
-		if (s->pos)
-			s->pos -= 1;
+		s->pos -= 1;
 		ft_find_max_min(s);
 		return (r);
 	}
@@ -18,7 +17,7 @@ static int		ft_pop(t_stack *s)
 
 void		ft_find_max_min(t_stack *a)
 {
-	size_t		i;
+	int		i;
 
 	a->max = 0;
 	a->min = 0;
@@ -37,10 +36,9 @@ void		ft_find_max_min(t_stack *a)
 
 int		ft_push_in_first(t_stack *a, t_stack *b)
 {
-	if (b->pos && a->pos < a->size)
+	if (b->pos >= 0 && (a->pos + 1) < a->size)
 	{
-		if (a->val[a->pos])
-			a->pos += 1;
+		a->pos += 1;
 		a->val[a->pos] = ft_pop(b);
 		ft_find_max_min(a);
 		return (a->val[a->pos]);

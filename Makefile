@@ -18,6 +18,7 @@ C_FILES = ft_it_is_sorted.c\
 		ft_push_in_first.c\
 		stack_operations.c\
 		ft_sorting.c\
+		ft_init_ops.c\
 
 SRCS = $(addprefix $(DIR_S)/,$(C_FILES))
 OBJS = $(addprefix $(DIR_O)/,$(C_FILES:.c=.o))
