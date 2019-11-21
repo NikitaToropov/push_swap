@@ -6,13 +6,6 @@ static int		*ft_free_and_return_null(int **i)
 	return (NULL);
 }
 
-static int		ft_is_it_space(char c)
-{
-	if ((c >= 9 && c <=13) || c == 32)
-		return (1);
-	return (0);
-}
-
 static int		ft_dup_detector(int *arr, size_t len)
 {
 	size_t		a;
@@ -37,7 +30,7 @@ static size_t	ft_len_int_arr(char *str)
 	i = 0;
 	while (*str)
 	{
-		while (ft_is_it_space(*str))
+		while (ft_isspace(*str))
 			str++;
 		if (*str == '+' || *str == '-')
 			str++;
@@ -64,7 +57,7 @@ int				*ft_int_arr(char *str, size_t *len)
 	i = 0;
 	while (*str && i < *len)
 	{
-		while (ft_is_it_space(*str))
+		while (ft_isspace(*str))
 			str++;
 		if (((arr[i] = ft_atoi(str)) == -1 && *str != '-') ||
 		(arr[i] == 0 && *str == '-'))
@@ -72,7 +65,7 @@ int				*ft_int_arr(char *str, size_t *len)
 		else
 			i++;
 		
-		while (*str && !ft_is_it_space(*str))
+		while (*str && !ft_isspace(*str))
 			str++;
 	}
 	if (ft_dup_detector(arr, *len))
