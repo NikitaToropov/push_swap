@@ -48,13 +48,16 @@ int					ft_it_is_sorted(int *arr, int len);
 void				ft_find_max_min(t_stack *a);
 int					ft_push_in_first(t_stack *a, t_stack *b);
 
-
+// 132 -> 321
 int					ft_rotate(t_stack *s);
+// 213 -> 321
 int					ft_rev_rotate(t_stack *s);
 int					ft_swap(t_stack *s);
 
 t_ops				*ft_init_ops(unsigned int len);
 void				ft_free_ops(t_ops **ops);
+
+void				ft_do_ops(t_stack *a, t_stack *b, int fd);
 
 void				ft_sorting(t_stack *a, t_stack *b);
 

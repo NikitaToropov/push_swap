@@ -1,11 +1,11 @@
 #include "push_swap.h"
 
-int		ft_swap(t_stack *s)
+int				ft_swap(t_stack *s)
 {
 	if (s->pos > 0)
 	{
 		s->val[s->pos] += s->val[s->pos - 1];
-		s->val[s->pos - 1] =s->val[s->pos] - s->val[s->pos - 1];
+		s->val[s->pos - 1] = s->val[s->pos] - s->val[s->pos - 1];
 		s->val[s->pos] -= s->val[s->pos - 1];
 		ft_find_max_min(s);
 		return (0);
@@ -13,10 +13,9 @@ int		ft_swap(t_stack *s)
 	return (1);
 }
 
-// 213 -> 321
-int			ft_rev_rotate(t_stack *s)
+int				ft_rev_rotate(t_stack *s)
 {
-	int 		i;
+	int			i;
 	int			tmp;
 
 	if (s->pos)
@@ -32,10 +31,9 @@ int			ft_rev_rotate(t_stack *s)
 	return (0);
 }
 
-// 132 -> 321
-int			ft_rotate(t_stack *s)
+int				ft_rotate(t_stack *s)
 {
-	int 		i;
+	int			i;
 	int			tmp;
 
 	if (s->pos)

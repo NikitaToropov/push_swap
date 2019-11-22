@@ -1,5 +1,5 @@
 NAME_PS = push_swap
-# NAME_CH = checker
+NAME_CH = checker
 
 LIB_DIR = ./libft
 LIB = $(LIB_DIR)/libft.a
@@ -18,7 +18,8 @@ C_FILES = ft_it_is_sorted.c\
 		ft_push_in_first.c\
 		stack_operations.c\
 		ft_sorting.c\
-		ft_init_ops.c\
+		ops_alloc_analyze_free.c\
+		ft_do_ops.c\
 
 SRCS = $(addprefix $(DIR_S)/,$(C_FILES))
 OBJS = $(addprefix $(DIR_O)/,$(C_FILES:.c=.o))
@@ -31,10 +32,13 @@ INC_HEADERS = -I $(INC_PSW) -I $(LIB_DIR)
 
 .PHONY: all clean fclean re lib
 
-all: $(NAME_PS)
+all: $(NAME_PS) $(NAME_CH)
 
 $(NAME_PS): $(DIR_O) $(LIB) $(OBJS) push_swap.c
 	$(CC) $(FLAGS) $(OBJS) $(INC_HEADERS) $(INC_LIBS) push_swap.c -o $@
+
+$(NAME_CH): $(DIR_O) $(LIB) $(OBJS) checker.c
+	$(CC) $(FLAGS) $(OBJS) $(INC_HEADERS) $(INC_LIBS) checker.c -o $@
 
 $(DIR_O):
 	mkdir -p objs

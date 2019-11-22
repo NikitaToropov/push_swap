@@ -8,9 +8,9 @@ static int		*ft_free_and_return_null(int **i)
 
 static int		ft_dup_detector(int *arr, int len)
 {
-	int		a;
-	int		b;
-	
+	int			a;
+	int			b;
+
 	a = 0;
 	while (a < len)
 	{
@@ -23,9 +23,9 @@ static int		ft_dup_detector(int *arr, int len)
 	return (0);
 }
 
-static int	ft_len_int_arr(char *str)
+static int		ft_len_int_arr(char *str)
 {
-	int		i;
+	int			i;
 
 	i = 0;
 	while (*str)
@@ -47,9 +47,7 @@ static int	ft_len_int_arr(char *str)
 int				*ft_int_arr(char *str, int *len)
 {
 	int			*arr;
-	// int		len;
 	int			i;
-
 
 	if (!(*len = ft_len_int_arr(str)) ||
 	(!(arr = (int*)malloc(sizeof(int) * *len))))
@@ -64,7 +62,6 @@ int				*ft_int_arr(char *str, int *len)
 			return (ft_free_and_return_null(&arr));
 		else
 			i++;
-		
 		while (*str && !ft_isspace(*str))
 			str++;
 	}

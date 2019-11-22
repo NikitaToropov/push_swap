@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static int		ft_pop(t_stack *s)
+static int	ft_pop(t_stack *s)
 {
 	int		r;
 
@@ -28,13 +28,11 @@ void		ft_find_max_min(t_stack *a)
 			a->max = i;
 		if (a->val[i] < a->val[a->min])
 			a->min = i;
-		// printf("our            max  %zu\n", a->max);
-		// printf("our            min  %zu\n\n", a->min);
 		i++;
 	}
 }
 
-int		ft_push_in_first(t_stack *a, t_stack *b)
+int			ft_push_in_first(t_stack *a, t_stack *b)
 {
 	if (b->pos >= 0 && (a->pos + 1) < a->size)
 	{
