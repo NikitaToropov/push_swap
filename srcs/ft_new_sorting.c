@@ -16,6 +16,7 @@ void			print_stacks(t_stack *a, t_stack *b)
 	printf("min     %-5i%i\n", a->min, b->min);
 	printf("size    %-5i%i\n", a->size, b->size);
 	printf("pos     %-5i%i\n", a->pos, b->pos);
+	printf("mod     %-5i%i\n", a->mod, b->mod);
 	printf("====================================\n");
 }
 
@@ -131,5 +132,6 @@ void			ft_new_sorting(t_stack *a, t_stack *b)
 		ft_put_in_first(a, b);
 	}
 	ft_sort_three(a);
-	ft_smart_insert_sort(a, b);
+	if (b->pos != -1)
+		ft_smart_insert_sort(a, b);
 }

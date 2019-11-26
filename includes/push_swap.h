@@ -21,6 +21,8 @@
 # define RRB		10
 # define RRR		11
 
+# define MXT		22
+
 typedef struct		s_ops
 {
 	unsigned int	size;
@@ -34,6 +36,7 @@ typedef struct		s_stack
 	int				min;
 	int				size;
 	int				pos;
+	int				mod;
 	int				*val;
 }					t_stack;
 
