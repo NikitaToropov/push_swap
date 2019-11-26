@@ -12,6 +12,8 @@ int		main(int c, char **v)
 		if (!(arr = ft_int_arr(v[1], &len)))
 		{
 			write(1, "Error\n", 6);
+			write(1, "there\n", 6);
+
 			return (0);
 		}
 		if (ft_a_is_sorted(arr, len))

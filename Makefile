@@ -21,6 +21,7 @@ C_FILES = ft_it_is_sorted.c\
 		ft_new_sorting.c\
 		ops_alloc_analyze_free.c\
 		ft_do_ops.c\
+		ft_smart_insert_sort.c\
 
 SRCS = $(addprefix $(DIR_S)/,$(C_FILES))
 OBJS = $(addprefix $(DIR_O)/,$(C_FILES:.c=.o))
@@ -56,5 +57,6 @@ clean:
 
 fclean: clean
 	rm -f $(NAME_PS)
+	rm -f $(NAME_CH)
 
 re: fclean all

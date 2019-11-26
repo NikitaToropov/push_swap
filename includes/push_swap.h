@@ -36,7 +36,8 @@ typedef struct		s_stack
 	int				min;
 	int				size;
 	int				pos;
-	int				mod;
+	int				r;
+	int				rr;
 	int				*val;
 }					t_stack;
 
@@ -59,8 +60,30 @@ int					ft_swap(t_stack *s);
 
 
 
+
+
+
+
+
+
+void				ft_smart_insert_sort(t_stack *a, t_stack *b);
+
+void				print_stacks(t_stack *a, t_stack *b);
 void				ft_new_sorting(t_stack *a, t_stack *b);
 void				ft_sorting(t_stack *a, t_stack *b);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 t_ops				*ft_init_ops(unsigned int len);
