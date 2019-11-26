@@ -14,13 +14,14 @@ int		main(int c, char **v)
 			write(1, "Error\n", 6);
 			return (0);
 		}
-		if (ft_it_is_sorted(arr, len))
+		if (ft_a_is_sorted(arr, len))
 		{
 			free(arr);
 			return (0);
 		}
 		ft_make_two_stacks(&a, &b, arr, len);
-		ft_sorting(a, b);
+		ft_new_sorting(a, b);
+		// ft_sorting(a, b);
 		ft_free_stacks(&a, &b);
 	}
 	return (0);

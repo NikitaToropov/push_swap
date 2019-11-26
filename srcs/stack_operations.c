@@ -13,7 +13,7 @@ int				ft_swap(t_stack *s)
 	return (1);
 }
 
-int				ft_rev_rotate(t_stack *s)
+int				ft_rotate(t_stack *s)
 {
 	int			i;
 	int			tmp;
@@ -31,7 +31,7 @@ int				ft_rev_rotate(t_stack *s)
 	return (0);
 }
 
-int				ft_rotate(t_stack *s)
+int				ft_rev_rotate(t_stack *s)
 {
 	int			i;
 	int			tmp;

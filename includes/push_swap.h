@@ -42,8 +42,8 @@ int					*ft_int_arr(char *str, int *len);
 void				ft_make_two_stacks(t_stack **a, t_stack **b, int *arr, int len);
 void				ft_free_stacks(t_stack **a, t_stack **b);
 
-int					ft_it_is_rev_sorted(int *arr, int len);
-int					ft_it_is_sorted(int *arr, int len);
+int					ft_b_is_sorted(int *arr, int len);
+int					ft_a_is_sorted(int *arr, int len);
 
 void				ft_find_max_min(t_stack *a);
 int					ft_push_in_first(t_stack *a, t_stack *b);
@@ -53,6 +53,12 @@ int					ft_rotate(t_stack *s);
 // 213 -> 321
 int					ft_rev_rotate(t_stack *s);
 int					ft_swap(t_stack *s);
+
+
+
+void				ft_new_sorting(t_stack *a, t_stack *b);
+void				ft_sorting(t_stack *a, t_stack *b);
+
 
 t_ops				*ft_init_ops(unsigned int len);
 void				ft_free_ops(t_ops **ops);

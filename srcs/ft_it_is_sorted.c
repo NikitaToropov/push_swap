@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int			ft_it_is_sorted(int *arr, int len)
+int			ft_a_is_sorted(int *arr, int len)
 {
 	int		i;
 
@@ -14,7 +14,7 @@ int			ft_it_is_sorted(int *arr, int len)
 	return (1);
 }
 
-int			ft_it_is_rev_sorted(int *arr, int len)
+int			ft_b_is_sorted(int *arr, int len)
 {
 	int		i;
 

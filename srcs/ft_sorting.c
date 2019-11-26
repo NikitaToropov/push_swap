@@ -1,5 +1,24 @@
 #include "push_swap.h"
 
+// void			print_stacks(t_stack *a, t_stack *b)
+// {
+// 	int			i;
+	
+// 	printf("-----------------------------------\n");
+// 	i = a->size - 1;
+// 	while (i >= 0)
+// 	{
+// 		printf("%-8i%-5i%i\n", i, a->val[i], b->val[i]);
+// 		i--;
+// 	}
+// 	printf("-----------------------------------\n");
+// 	printf("max     %-5i%i\n", a->max, b->max);
+// 	printf("min     %-5i%i\n", a->min, b->min);
+// 	printf("size    %-5i%i\n", a->size, b->size);
+// 	printf("pos     %-5i%i\n", a->pos, b->pos);
+// 	printf("====================================\n");
+// }
+
 static void		ft_print_ops(t_ops *ops)
 {
 	int			i;
@@ -42,8 +61,8 @@ static void		ft_one_step_sort(t_stack *a, t_stack *b, t_ops *ops)
 	}
 	else if (a->min == 0)
 	{
-		ops->str[(ops->pos += 1)] = RA;
-		ft_rotate(a);
+		ops->str[(ops->pos += 1)] = RRA;
+		ft_rev_rotate(a);
 	}
 	else if (a->pos > 0 && a->val[a->pos] > a->val[a->pos - 1])
 	{
@@ -52,8 +71,8 @@ static void		ft_one_step_sort(t_stack *a, t_stack *b, t_ops *ops)
 	}
 	else
 	{
-		ops->str[(ops->pos += 1)] = RRA;
-		ft_rev_rotate(a);
+		ops->str[(ops->pos += 1)] = RA;
+		ft_rotate(a);
 	}
 }
 
@@ -64,7 +83,7 @@ void			ft_sorting(t_stack *a, t_stack *b)
 
 	i = 0;
 	ops = ft_init_ops((unsigned int)(a->size * 2));
-	while (a->pos && !ft_it_is_sorted(a->val, a->pos))
+	while (a->pos && !ft_a_is_sorted(a->val, a->pos))
 	{
 		if (ops->pos == (int)(ops->size - 1))
 			ops->str = ft_realloc(ops->str, (size_t)(ops->size *= 2));
