@@ -33,12 +33,11 @@ int			ft_count_ops(t_stack *a, t_stack *b, int p)
 	b->r = b->pos - p;
 	b->rr = p + 1;
 	ft_count_ops_in_a(a, b->val[p]);
-	if ((r_r = a->r) < b->r)
-		r_r = b->r;
-	if ((rr_rr = a->rr) < b->rr)
-		r_r = b->rr;
-	r_rr = a->r + b->rr;
-	rr_r = a->rr + b->r;
+	r_r = b->r + a->r;
+	rr_rr = b->rr + a->rr;
+	r_rr = 2 * a->r + b->rr;
+	rr_r = 2 * a->rr + b->r;
+	
 	
 	// printf("+++++++++ J = %i +++++++\n", p);
 	// print_stacks(a, b);/////////////////////////////////////////////////////////

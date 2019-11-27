@@ -54,49 +54,12 @@ void			print_stacks(t_stack *a, t_stack *b)
 	printf("====================================\n");
 }
 
-// void		ft_sort_three(t_stack *a, t_ops *ops)
-// {
-// 	if (ft_a_is_sorted(a->val, a->pos))
-// 		return ;
-// 	else if (a->max == 2 && a->min == 0)
-// 	{
-// 		ft_swap(a);
-// 		ops->str[(ops->pos += 1)] = SA;
-// 		ft_rev_rotate(a);
-// 		ops->str[(ops->pos += 1)] = RRA;
-// 	}
-// 	else if (a->max == 2)
-// 	{
-// 		ft_rotate(a);
-// 		ops->str[(ops->pos += 1)] = RA;
-// 	}
-// 	else if (a->min == 0)
-// 	{
-// 		ft_swap(a);
-// 		ops->str[(ops->pos += 1)] = SA;
-// 		ft_rotate(a);
-// 		ops->str[(ops->pos += 1)] = RA;
-// 	}
-// 	else
-// 	{
-// 		ft_rev_rotate(a);
-// 		ops->str[(ops->pos += 1)] = RRA;
-// 	}
-// }
-
 void			ft_new_sorting(t_stack *a, t_stack *b)
 {
 	t_ops		*ops;
 
 	ops = ft_init_ops((unsigned int)(a->size * 2));
-	// printf("a->val[a->pos] = %i\n", a->val[a->pos]);
-	// printf("a->val[a->pos - 1] = %i\n", a->val[a->pos - 1]);
-	if (a->val[a->pos] > a->val[a->pos - 1])
-	{
-
-		ft_swap(a);
-		ops->str[(ops->pos += 1)] = SA;
-	}
+	
 	while (a->pos > 2)
 	{
 		if (ops->pos == (int)(ops->size - 1))
@@ -106,13 +69,10 @@ void			ft_new_sorting(t_stack *a, t_stack *b)
 	}
 	if (ops->pos == (int)(ops->size - 1))
 		ops->str = ft_realloc(ops->str, (size_t)(ops->size *= 2));
-	// print_stacks(a, b);
 	if ((!ft_a_is_sorted(a->val, a->pos) && a->pos < 2) ||
 	(a->min == a->pos & a->max != 0) ||
 	(a->max == 0 && a->min != a->pos) || (a->max == a->pos && a->min == 0))
 	{
-	// printf("YOYOYOYOYOYOYOYOYOYOYOYOYOYOYOYYOYOYOYOYYOY\n");
-
 		ops->str[(ops->pos += 1)] = SA;
 		ft_swap(a);
 	}

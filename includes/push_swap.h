@@ -75,6 +75,8 @@ void				ft_sorting(t_stack *a, t_stack *b); // traaaaaash//////////////
 
 
 
+void		ft_rev_rotate_me_baby(t_stack *a, t_stack *b, t_ops *ops);
+void		ft_rotate_me_baby(t_stack *a, t_stack *b, t_ops *ops);
 
 
 
