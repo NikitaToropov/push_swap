@@ -14,7 +14,7 @@ void		ft_count_ops_in_a(t_stack *a, int v)
 	j = a->max;
 	while (i <= a->pos)
 	{
-		if (a->val[i] > v && a->val[i] < a->val[j])
+		if (a->val[i] >= v && a->val[i] < a->val[j])
 			j = i;
 		i++;
 	}
@@ -33,12 +33,14 @@ int			ft_count_ops(t_stack *a, t_stack *b, int p)
 	b->r = b->pos - p;
 	b->rr = p + 1;
 	ft_count_ops_in_a(a, b->val[p]);
-	if ((r_r = a->r - b->r) < 0)
-		r_r = b->r - a->r;
-	if ((rr_rr = a->rr - b->rr) < 0)
-		r_r = b->rr - a->rr;
-	r_rr = b->r + a->rr;
-	rr_r = b->rr + a->r;
+	if ((r_r = a->r) < b->r)
+		r_r = b->r;
+	if ((rr_rr = a->rr) < b->rr)
+		r_r = b->rr;
+	r_rr = a->r + b->rr;
+	rr_r = a->rr + b->r;
+	
+	// printf("+++++++++ J = %i +++++++\n", p);
 	// print_stacks(a, b);/////////////////////////////////////////////////////////
 	if ((res = r_r) < rr_rr && res < r_rr && res < rr_r)
 	{
@@ -53,16 +55,18 @@ int			ft_count_ops(t_stack *a, t_stack *b, int p)
 	}
 	else if ((res = r_rr) < r_r && res < rr_rr && res < rr_r)
 	{
-		b->rr = 0;
-		a->r = 0;
+		a->rr = 0;
+		b->r = 0;
 	}
 	else
 	{
 		res = rr_r;
-		b->r = 0;
-		a->rr = 0;
+		a->r = 0;
+		b->rr = 0;
 	}
-	// print_stacks(a, b);/////////////////////////////////////////////////////////
+	// printf("--------- OUR WAY = %i ----------\n", res);
+	// printf("+++++++++ J = %i +++++++\n\n\n", p);
+
 	return (res);
 }
 
@@ -87,50 +91,92 @@ int		ft_find_shorter_way(t_stack *a, t_stack *b)
 		}
 		p++;
 	}
-
 	ft_count_ops(a, b, j);
+	// print_stacks(a, b);/////////////////////////////////////////////////////////
+	// printf("^^^^^^^^^^^^^^^^^^^^^ WHAT YOU WANT^^^^^^^^^^^^^^^^^^^^^^\n");
+	// printf("^^^^^^^^^^^^^^^^^^^^^ WHAT YOU WANT^^^^^^^^^^^^^^^^^^^^^^\n");
+	// printf("^^^^^^^^^^^^^^^^^^^^^ WHAT YOU WANT^^^^^^^^^^^^^^^^^^^^^^\n");
+	// printf("^^^^^^^^^^^^^^^^^^^^^ WHAT YOU WANT^^^^^^^^^^^^^^^^^^^^^^\n");
 	
 	return (j);
 }
 
-void		ft_smart_insert_sort(t_stack *a, t_stack *b)
+void		ft_rotate_me_baby(t_stack *a, t_stack *b, t_ops *ops)
+{
+	while (a->r || b->r)
+	{
+		if (ops->pos == (int)(ops->size - 1))
+			ops->str = ft_realloc(ops->str, (size_t)(ops->size *= 2));
+		if (a->r && b->r)
+		{
+			ft_rotate(a);
+			ft_rotate(b);
+			ops->str[(ops->pos += 1)] = RR;
+			a->r -= 1;
+			b->r -= 1;
+		}
+		else if (a->r)
+		{
+			ft_rotate(a);
+			a->r -= 1;
+			ops->str[(ops->pos += 1)] = RA;
+		}
+		else if (b->r)
+		{
+			ft_rotate(b);
+			ops->str[(ops->pos += 1)] = RB;
+			b->r -= 1;
+		}
+	}
+}
+
+void		ft_rev_rotate_me_baby(t_stack *a, t_stack *b, t_ops *ops)
+{
+	while (a->rr || b->rr)
+	{
+		if (ops->pos == (int)(ops->size - 1))
+			ops->str = ft_realloc(ops->str, (size_t)(ops->size *= 2));
+		if (a->rr && b->rr)
+		{
+			ft_rev_rotate(b);
+			ft_rev_rotate(a);
+			ops->str[(ops->pos += 1)] = RRR;
+			a->rr -= 1;
+			b->rr -= 1;
+		}
+		else if (a->rr)
+		{
+			ft_rev_rotate(a);
+			ops->str[(ops->pos += 1)] = RRA;
+			a->rr -= 1;
+		}
+		else if (b->rr)
+		{
+			ft_rev_rotate(b);
+			ops->str[(ops->pos += 1)] = RRB;
+			b->rr -= 1;
+		}
+	}
+}
+
+void		ft_smart_insert_sort(t_stack *a, t_stack *b, t_ops *ops)
 {
 	int		p;
 
 	while (b->pos >= 0)
 	{
 		p = ft_find_shorter_way(a, b);
-		while (a->r || b->r)
-		{
-	// IPORTANT!!!!!!! later serch combination "RA RB"
-			if (a->r)
-			{
-				ft_rotate(a);
-				a->r -= 1;
-			}
-			if (b->r)
-			{
-				ft_rotate(b);
-				b->r -= 1;
-			}
-	// write(1, "HELLO THERE!/n", 13);
-		}
-		while (a->rr || b->rr)
-		{
-			// print_stacks(a, b);
-	// IPORTANT!!!!!!! later serch combination "RRA RRB"
-			if (a->rr)
-			{
-				ft_rev_rotate(a);
-				a->rr -= 1;
-			}
-			if (b->rr)
-			{
-				ft_rev_rotate(b);
-				b->rr -= 1;
-			}
-		}
+	
+		ft_rotate_me_baby(a, b, ops);
+		ft_rev_rotate_me_baby(a, b, ops);
+		if (ops->pos == (int)(ops->size - 1))
+			ops->str = ft_realloc(ops->str, (size_t)(ops->size *= 2));
 		ft_push_in_first(a, b);
+		ops->str[(ops->pos += 1)] = PA;
 	}
-	print_stacks(a, b);
+	ft_count_ops_in_a(a, a->val[a->min]);
+	if (a->r < a->rr)
+		ft_rotate_me_baby(a, b, ops);
+	else
+		ft_rev_rotate_me_baby(a, b, ops);
 }

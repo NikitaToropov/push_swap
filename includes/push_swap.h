@@ -66,11 +66,11 @@ int					ft_swap(t_stack *s);
 
 
 
-void				ft_smart_insert_sort(t_stack *a, t_stack *b);
+void				ft_smart_insert_sort(t_stack *a, t_stack *b, t_ops *ops);
 
-void				print_stacks(t_stack *a, t_stack *b);
+void				print_stacks(t_stack *a, t_stack *b); // traaaaaash//////////////
 void				ft_new_sorting(t_stack *a, t_stack *b);
-void				ft_sorting(t_stack *a, t_stack *b);
+void				ft_sorting(t_stack *a, t_stack *b); // traaaaaash//////////////
 
 
 

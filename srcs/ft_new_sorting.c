@@ -1,10 +1,43 @@
 #include "push_swap.h"
 
+static void		ft_print_ops(t_ops *ops)
+{
+	int			i;
+
+	i = 0;
+	while (i <= ops->pos)
+	{
+		if (ops->str[i] == SA)
+			write(1, "SA\n", 3);
+		if (ops->str[i] == SB)
+			write(1, "SB\n", 3);
+		if (ops->str[i] == SS)
+			write(1, "SS\n", 3);
+		if (ops->str[i] == PA)
+			write(1, "PA\n", 3);
+		if (ops->str[i] == PB)
+			write(1, "PB\n", 3);
+		if (ops->str[i] == RA)
+			write(1, "RA\n", 3);
+		if (ops->str[i] == RB)
+			write(1, "RB\n", 3);
+		if (ops->str[i] == RR)
+			write(1, "RR\n", 3);
+		if (ops->str[i] == RRA)
+			write(1, "RRA\n", 4);
+		if (ops->str[i] == RRB)
+			write(1, "RRB\n", 4);
+		if (ops->str[i] == RRR)
+			write(1, "RRR\n", 4);
+		i++;
+	}
+}
+
 void			print_stacks(t_stack *a, t_stack *b)
 {
 	int			i;
 	
-	printf("-----------------------------------\n");
+	printf("+++++++++++ JUST DELIMETER +++++++++\n");
 	i = a->size - 1;
 	while (i >= 0)
 	{
@@ -21,36 +54,70 @@ void			print_stacks(t_stack *a, t_stack *b)
 	printf("====================================\n");
 }
 
-void		ft_sort_three(t_stack *a)
-{
-	if (ft_a_is_sorted(a->val, a->pos))
-		return ;
-	if (a->max == 0)
-		ft_swap(a);
-	else if (a->max == 2 && a->min == 0)
-	{
-		ft_swap(a);
-		ft_rev_rotate(a);
-	}
-	else if (a->max == 2)
-		ft_rotate(a);
-	else if (a->min == 0)
-	{
-		ft_swap(a);
-		ft_rotate(a);
-	}
-	else
-		ft_rev_rotate(a);
-}
+// void		ft_sort_three(t_stack *a, t_ops *ops)
+// {
+// 	if (ft_a_is_sorted(a->val, a->pos))
+// 		return ;
+// 	else if (a->max == 2 && a->min == 0)
+// 	{
+// 		ft_swap(a);
+// 		ops->str[(ops->pos += 1)] = SA;
+// 		ft_rev_rotate(a);
+// 		ops->str[(ops->pos += 1)] = RRA;
+// 	}
+// 	else if (a->max == 2)
+// 	{
+// 		ft_rotate(a);
+// 		ops->str[(ops->pos += 1)] = RA;
+// 	}
+// 	else if (a->min == 0)
+// 	{
+// 		ft_swap(a);
+// 		ops->str[(ops->pos += 1)] = SA;
+// 		ft_rotate(a);
+// 		ops->str[(ops->pos += 1)] = RA;
+// 	}
+// 	else
+// 	{
+// 		ft_rev_rotate(a);
+// 		ops->str[(ops->pos += 1)] = RRA;
+// 	}
+// }
 
 void			ft_new_sorting(t_stack *a, t_stack *b)
 {
+	t_ops		*ops;
+
+	ops = ft_init_ops((unsigned int)(a->size * 2));
+	// printf("a->val[a->pos] = %i\n", a->val[a->pos]);
+	// printf("a->val[a->pos - 1] = %i\n", a->val[a->pos - 1]);
+	if (a->val[a->pos] > a->val[a->pos - 1])
+	{
+
+		ft_swap(a);
+		ops->str[(ops->pos += 1)] = SA;
+	}
 	while (a->pos > 2)
 	{
+		if (ops->pos == (int)(ops->size - 1))
+			ops->str = ft_realloc(ops->str, (size_t)(ops->size *= 2));
 		ft_push_in_first(b, a);
+		ops->str[(ops->pos += 1)] = PB;
 	}
+	if (ops->pos == (int)(ops->size - 1))
+		ops->str = ft_realloc(ops->str, (size_t)(ops->size *= 2));
+	// print_stacks(a, b);
+	if ((!ft_a_is_sorted(a->val, a->pos) && a->pos < 2) ||
+	(a->min == a->pos & a->max != 0) ||
+	(a->max == 0 && a->min != a->pos) || (a->max == a->pos && a->min == 0))
+	{
+	// printf("YOYOYOYOYOYOYOYOYOYOYOYOYOYOYOYYOYOYOYOYYOY\n");
 
-	ft_sort_three(a);
-	if (b->pos != -1)
-		ft_smart_insert_sort(a, b);
+		ops->str[(ops->pos += 1)] = SA;
+		ft_swap(a);
+	}
+	// print_stacks(a, b);
+	ft_smart_insert_sort(a, b, ops);
+	ft_print_ops(ops);
+	ft_free_ops(&ops);
 }
