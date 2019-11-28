@@ -89,10 +89,12 @@ void			ft_do_ops(t_stack *a, t_stack *b)
 			continue ;
 		else
 		{
+			free(op);
 			write(1, "Error\n", 6);
 			return ;
 		}
 	}
+	free(op);
 	if (a->pos == (a->size - 1) && ft_a_is_sorted(a->val, a->pos))
 		write(1, "OK\n", 3);
 	else

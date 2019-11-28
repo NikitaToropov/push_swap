@@ -37,6 +37,7 @@ typedef struct		s_stack
 	int				r;
 	int				rr;
 	int				*val;
+	char			name;
 }					t_stack;
 
 int					*ft_int_arr(char *str, int *len); // 
@@ -47,43 +48,18 @@ int					ft_a_is_sorted(int *arr, int len);
 void				ft_make_two_stacks(t_stack **a, t_stack **b, int *arr,
 					int len);
 void				ft_free_stacks(t_stack *a, t_stack *b);
-
-
-
-
-
-
-
-
 void				ft_find_max_min(t_stack *a);
 int					ft_push_in_first(t_stack *a, t_stack *b);
 void				ft_push_n_times(t_stack *a, t_stack *b, int n);
-
 // 132 -> 321
 int					ft_rotate(t_stack *s);
+void				ft_rotate_n_times(t_stack *s, int n);
 // 213 -> 321
 int					ft_rev_rotate(t_stack *s);
+void				ft_rev_rotate_n_times(t_stack *s, int n);
 int					ft_swap(t_stack *s);
-
-
-
-
-
-
-
-
-
-void				ft_smart_insert_sort(t_stack *a, t_stack *b, t_ops *ops);
-
-void				print_stacks(t_stack *a, t_stack *b); // traaaaaash//////////////
 void				ft_new_sorting(t_stack *a, t_stack *b);
-void				ft_sorting(t_stack *a, t_stack *b); // traaaaaash//////////////
-
-
-
-
-void		ft_rev_rotate_me_baby(t_stack *a, t_stack *b, t_ops *ops);
-void		ft_rotate_me_baby(t_stack *a, t_stack *b, t_ops *ops);
+void				ft_rotate_both_stacks(t_stack *a, t_stack *b, t_ops *ops);
 
 
 
@@ -95,6 +71,25 @@ void		ft_rotate_me_baby(t_stack *a, t_stack *b, t_ops *ops);
 
 
 
+
+
+
+
+
+
+
+void				ft_count_ops_in_a(t_stack *a, int v);
+int					ft_find_shorter_way(t_stack *a, t_stack *b);
+void				ft_smart_insert_sort(t_stack *a, t_stack *b, t_ops *ops);
+void				print_stacks(t_stack *a, t_stack *b); // traaaaaash//////////////
+
+
+
+
+
+
+void				ft_push_op_n_times(t_ops *ops, char op, int n);
+void				ft_push_op(t_ops *ops, char op);
 t_ops				*ft_init_ops(unsigned int len);
 void				ft_free_ops(t_ops **ops);
 

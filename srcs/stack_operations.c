@@ -31,6 +31,12 @@ int				ft_rotate(t_stack *s)
 	return (0);
 }
 
+void			ft_rotate_n_times(t_stack *s, int n)
+{
+	while (n && ft_rotate(s))
+		n--;
+}
+
 int				ft_rev_rotate(t_stack *s)
 {
 	int			i;
@@ -47,4 +53,10 @@ int				ft_rev_rotate(t_stack *s)
 		return (1);
 	}
 	return (0);
+}
+
+void			ft_rev_rotate_n_times(t_stack *s, int n)
+{
+	while (n && ft_rev_rotate(s))
+		n--;
 }

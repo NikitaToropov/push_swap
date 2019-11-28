@@ -13,6 +13,7 @@ static void		ft_print_sp_ops(char op)
 	else if (op == PB)
 		write(1, "PB\n", 3);
 }
+
 static void		ft_print_r_ops(char op)
 {
 	if (op == RA)
@@ -67,21 +68,15 @@ void			ft_new_sorting(t_stack *a, t_stack *b)
 {
 	t_ops		*ops;
 
-	ops = ft_init_ops((unsigned int)(a->size * 2));
-	while (a->pos > 2)
-	{
-		if (ops->pos == (int)(ops->size - 1))
-			ops->str = ft_realloc(ops->str, (size_t)(ops->size *= 2));
-		ft_push_in_first(b, a);
-		ops->str[(ops->pos += 1)] = PB;
-	}
-	if (ops->pos == (int)(ops->size - 1))
-		ops->str = ft_realloc(ops->str, (size_t)(ops->size *= 2));
+	ops = ft_init_ops((unsigned int)(2));
+	ft_push_op_n_times(ops, PB, (a->pos - 2));
+	ft_push_n_times(b, a, (a->pos - 2));
+
 	if ((!ft_a_is_sorted(a->val, a->pos) && a->pos < 2) ||
 	(a->min == a->pos & a->max != 0) ||
 	(a->max == 0 && a->min != a->pos) || (a->max == a->pos && a->min == 0))
 	{
-		ops->str[(ops->pos += 1)] = SA;
+		ft_push_op(ops, SA);
 		ft_swap(a);
 	}
 	ft_smart_insert_sort(a, b, ops);
