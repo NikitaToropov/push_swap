@@ -94,7 +94,7 @@ void		ft_rotate_me_baby(t_stack *a, t_stack *b, t_ops *ops);
 t_ops				*ft_init_ops(unsigned int len);
 void				ft_free_ops(t_ops **ops);
 
-void				ft_do_ops(t_stack *a, t_stack *b, int fd);
+void				ft_do_ops(t_stack *a, t_stack *b);
 
 void				ft_sorting(t_stack *a, t_stack *b);
 

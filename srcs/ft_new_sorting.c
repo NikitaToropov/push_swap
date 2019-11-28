@@ -36,7 +36,7 @@ static void		ft_print_ops(t_ops *ops)
 void			print_stacks(t_stack *a, t_stack *b)
 {
 	int			i;
-	
+
 	printf("+++++++++++ JUST DELIMETER +++++++++\n");
 	i = a->size - 1;
 	while (i >= 0)
@@ -57,10 +57,8 @@ void			print_stacks(t_stack *a, t_stack *b)
 void			ft_new_sorting(t_stack *a, t_stack *b)
 {
 	t_ops		*ops;
-	// int			median;
 
 	ops = ft_init_ops((unsigned int)(a->size * 2));
-	// median = ft_find_median(a);
 	while (a->pos > 2)
 	{
 		if (ops->pos == (int)(ops->size - 1))

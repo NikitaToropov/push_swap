@@ -78,11 +78,11 @@ static int		ft_all_rev_rotates(t_stack *a, t_stack *b, char *op)
 	return (0);
 }
 
-void			ft_do_ops(t_stack *a, t_stack *b, int fd)
+void			ft_do_ops(t_stack *a, t_stack *b)
 {
 	char		*op;
 
-	while (ft_get_next_line(fd, &op))
+	while (ft_get_next_line(0, &op))
 	{
 		if (ft_all_swaps(a, b, op) || ft_all_pushes(a, b, op) ||
 		ft_all_rotates(a, b, op) || ft_all_rev_rotates(a, b, op))
