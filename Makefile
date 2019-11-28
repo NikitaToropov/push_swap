@@ -28,7 +28,7 @@ OBJS = $(addprefix $(DIR_O)/,$(C_FILES:.c=.o))
 
 # flags
 CC = gcc
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -g
 INC_LIBS = -L $(LIB_DIR) -lft
 INC_HEADERS = -I $(INC_PSW) -I $(LIB_DIR)
 

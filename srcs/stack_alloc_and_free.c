@@ -21,13 +21,11 @@ void	ft_make_two_stacks(t_stack **a, t_stack **b, int *arr, int len)
 	(*a)->pos = len - 1;
 	(*a)->r = 0;
 	(*a)->rr = 0;
-	(*a)->name = 'a';
 	ft_find_max_min(*a);
 	(*b)->size = len;
 	(*b)->pos = -1;
 	(*b)->r = 0;
 	(*b)->rr = 0;
-	(*b)->name = 'b';
 	ft_find_max_min(*b);
 	while (len--)
 		(*b)->val[len] = 0;

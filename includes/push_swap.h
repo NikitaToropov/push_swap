@@ -37,7 +37,6 @@ typedef struct		s_stack
 	int				r;
 	int				rr;
 	int				*val;
-	char			name;
 }					t_stack;
 
 int					*ft_int_arr(char *str, int *len); // 

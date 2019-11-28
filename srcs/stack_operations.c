@@ -18,7 +18,7 @@ int				ft_rotate(t_stack *s)
 	int			i;
 	int			tmp;
 
-	if (s->pos)
+	if (s && s->pos)
 	{
 		tmp = s->val[s->pos];
 		i = s->pos;
@@ -42,7 +42,7 @@ int				ft_rev_rotate(t_stack *s)
 	int			i;
 	int			tmp;
 
-	if (s->pos)
+	if (s && s->pos)
 	{
 		tmp = s->val[0];
 		i = 0;
