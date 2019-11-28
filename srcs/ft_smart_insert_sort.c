@@ -33,14 +33,12 @@ int			ft_count_ops(t_stack *a, t_stack *b, int p)
 	b->r = b->pos - p;
 	b->rr = p + 1;
 	ft_count_ops_in_a(a, b->val[p]);
-	r_r = b->r + a->r;
-	rr_rr = b->rr + a->rr;
-	r_rr = 2 * a->r + b->rr;
-	rr_r = 2 * a->rr + b->r;
-	
-	
-	// printf("+++++++++ J = %i +++++++\n", p);
-	// print_stacks(a, b);/////////////////////////////////////////////////////////
+	if ((r_r = b->r) < a->r)
+		r_r = a->r;
+	if ((rr_rr = b->rr) < a->rr)
+		rr_rr = a->rr;
+	r_rr = a->r + b->rr;
+	rr_r = a->rr + b->r;
 	if ((res = r_r) < rr_rr && res < r_rr && res < rr_r)
 	{
 		b->rr = 0;
@@ -48,7 +46,6 @@ int			ft_count_ops(t_stack *a, t_stack *b, int p)
 	}
 	else if ((res = rr_rr) < r_r && res < r_rr && res < rr_r)
 	{
-
 		b->r = 0;
 		a->r = 0;
 	}
@@ -63,9 +60,6 @@ int			ft_count_ops(t_stack *a, t_stack *b, int p)
 		a->r = 0;
 		b->rr = 0;
 	}
-	// printf("--------- OUR WAY = %i ----------\n", res);
-	// printf("+++++++++ J = %i +++++++\n\n\n", p);
-
 	return (res);
 }
 
@@ -91,12 +85,6 @@ int		ft_find_shorter_way(t_stack *a, t_stack *b)
 		p++;
 	}
 	ft_count_ops(a, b, j);
-	// print_stacks(a, b);/////////////////////////////////////////////////////////
-	// printf("^^^^^^^^^^^^^^^^^^^^^ WHAT YOU WANT^^^^^^^^^^^^^^^^^^^^^^\n");
-	// printf("^^^^^^^^^^^^^^^^^^^^^ WHAT YOU WANT^^^^^^^^^^^^^^^^^^^^^^\n");
-	// printf("^^^^^^^^^^^^^^^^^^^^^ WHAT YOU WANT^^^^^^^^^^^^^^^^^^^^^^\n");
-	// printf("^^^^^^^^^^^^^^^^^^^^^ WHAT YOU WANT^^^^^^^^^^^^^^^^^^^^^^\n");
-	
 	return (j);
 }
 

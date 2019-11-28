@@ -43,3 +43,12 @@ int			ft_push_in_first(t_stack *a, t_stack *b)
 	}
 	return (0);
 }
+
+void		ft_push_n_times(t_stack *a, t_stack *b, int n)
+{
+	while (n)
+	{
+		ft_push_in_first(a, b);
+		n--;
+	}
+}

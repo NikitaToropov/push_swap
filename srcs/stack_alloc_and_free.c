@@ -1,16 +1,5 @@
 #include "push_swap.h"
 
-// void	ft_free_stacks(t_stack **a, t_stack **b)
-// {
-// 	if ((*a)->val)
-// 		free((*a)->val);
-// 	if ((*b)->val)
-// 		free((*b)->val);
-// 	free(*a);
-// 	free(*b);
-// 	a = NULL;
-// 	b = NULL;
-// }
 void	ft_free_stacks(t_stack *a, t_stack *b)
 {
 	if ((a)->val)
