@@ -17,7 +17,6 @@ C_FILES = ft_it_is_sorted.c\
 		stack_alloc_and_free.c\
 		ft_push_in_first.c\
 		stack_operations.c\
-		ft_sorting.c\
 		ft_new_sorting.c\
 		ops_alloc_analyze_free.c\
 		ft_do_ops.c\

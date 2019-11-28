@@ -52,8 +52,8 @@ int				*ft_int_arr(char *str, int *len)
 	if (!(*len = ft_len_int_arr(str)) ||
 	(!(arr = (int*)malloc(sizeof(int) * *len))))
 		return (NULL);
-	i = 0;
-	while (*str && i < *len)
+	i = *len - 1;
+	while (*str && i >= 0)
 	{
 		while (ft_isspace(*str))
 			str++;
@@ -61,7 +61,7 @@ int				*ft_int_arr(char *str, int *len)
 		(arr[i] == 0 && *str == '-'))
 			return (ft_free_and_return_null(&arr));
 		else
-			i++;
+			i--;
 		while (*str && !ft_isspace(*str))
 			str++;
 	}

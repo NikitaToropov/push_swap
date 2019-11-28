@@ -9,14 +9,12 @@
 # define SA			1
 # define SB			2
 # define SS			3
-
 # define PA			4
 # define PB			5
 
 # define RA			6
 # define RB			7
 # define RR			8
-
 # define RRA		9
 # define RRB		10
 # define RRR		11
@@ -41,14 +39,20 @@ typedef struct		s_stack
 	int				*val;
 }					t_stack;
 
-int					*ft_int_arr(char *str, int *len);
-
-void				ft_make_two_stacks(t_stack **a, t_stack **b, int *arr, int len);
-// void				ft_free_stacks(t_stack **a, t_stack **b);
-void				ft_free_stacks(t_stack *a, t_stack *b);
+int					*ft_int_arr(char *str, int *len); // 
 
 int					ft_b_is_sorted(int *arr, int len);
 int					ft_a_is_sorted(int *arr, int len);
+
+void				ft_make_two_stacks(t_stack **a, t_stack **b, int *arr,
+					int len);
+void				ft_free_stacks(t_stack *a, t_stack *b);
+
+
+
+
+
+
 
 
 void				ft_find_max_min(t_stack *a);
@@ -95,7 +99,5 @@ t_ops				*ft_init_ops(unsigned int len);
 void				ft_free_ops(t_ops **ops);
 
 void				ft_do_ops(t_stack *a, t_stack *b);
-
-void				ft_sorting(t_stack *a, t_stack *b);
 
 #endif

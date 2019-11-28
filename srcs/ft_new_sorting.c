@@ -1,5 +1,34 @@
 #include "push_swap.h"
 
+static void		ft_print_sp_ops(char op)
+{
+	if (op == SA)
+		write(1, "SA\n", 3);
+	else if (op == SB)
+		write(1, "SB\n", 3);
+	else if (op == SS)
+		write(1, "SS\n", 3);
+	else if (op == PA)
+		write(1, "PA\n", 3);
+	else if (op == PB)
+		write(1, "PB\n", 3);
+}
+static void		ft_print_r_ops(char op)
+{
+	if (op == RA)
+		write(1, "RA\n", 3);
+	else if (op == RB)
+		write(1, "RB\n", 3);
+	else if (op == RR)
+		write(1, "RR\n", 3);
+	else if (op == RRA)
+		write(1, "RRA\n", 4);
+	else if (op == RRB)
+		write(1, "RRB\n", 4);
+	else if (op == RRR)
+		write(1, "RRR\n", 4);
+}
+
 static void		ft_print_ops(t_ops *ops)
 {
 	int			i;
@@ -7,28 +36,8 @@ static void		ft_print_ops(t_ops *ops)
 	i = 0;
 	while (i <= ops->pos)
 	{
-		if (ops->str[i] == SA)
-			write(1, "SA\n", 3);
-		if (ops->str[i] == SB)
-			write(1, "SB\n", 3);
-		if (ops->str[i] == SS)
-			write(1, "SS\n", 3);
-		if (ops->str[i] == PA)
-			write(1, "PA\n", 3);
-		if (ops->str[i] == PB)
-			write(1, "PB\n", 3);
-		if (ops->str[i] == RA)
-			write(1, "RA\n", 3);
-		if (ops->str[i] == RB)
-			write(1, "RB\n", 3);
-		if (ops->str[i] == RR)
-			write(1, "RR\n", 3);
-		if (ops->str[i] == RRA)
-			write(1, "RRA\n", 4);
-		if (ops->str[i] == RRB)
-			write(1, "RRB\n", 4);
-		if (ops->str[i] == RRR)
-			write(1, "RRR\n", 4);
+		ft_print_sp_ops(ops->str[i]);
+		ft_print_r_ops(ops->str[i]);
 		i++;
 	}
 }
