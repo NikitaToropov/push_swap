@@ -44,7 +44,8 @@ typedef struct		s_stack
 int					*ft_int_arr(char *str, int *len);
 
 void				ft_make_two_stacks(t_stack **a, t_stack **b, int *arr, int len);
-void				ft_free_stacks(t_stack **a, t_stack **b);
+// void				ft_free_stacks(t_stack **a, t_stack **b);
+void				ft_free_stacks(t_stack *a, t_stack *b);
 
 int					ft_b_is_sorted(int *arr, int len);
 int					ft_a_is_sorted(int *arr, int len);

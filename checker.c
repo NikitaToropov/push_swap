@@ -33,7 +33,8 @@ int		main(int c, char **v)
 			fd = 0;
 		ft_make_two_stacks(&a, &b, arr, len);
 		ft_do_ops(a, b, fd);
-		ft_free_stacks(&a, &b);
+		// ft_free_stacks(&a, &b);
+		ft_free_stacks(a, b);
 	}
 	return (0);
 }

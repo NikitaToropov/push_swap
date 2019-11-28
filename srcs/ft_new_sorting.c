@@ -116,22 +116,22 @@ void		ft_rev_rotate_n_times(t_stack *s, int n, t_ops *ops)
 	}
 }
 
-void		ft_split_to_b(t_stack *a,t_stack *b, t_ops *ops)
-{
-	int		start;
-	int		finish;
+// void		ft_split_to_b(t_stack *a,t_stack *b, t_ops *ops)
+// {
+// 	int		start;
+// 	int		finish;
 
-	ft_find_biggest_fix(a, &start, &finish);
-	ft_push_n_times(a, b, (a->pos - finish), ops);
+// 	ft_find_biggest_fix(a, &start, &finish);
+// 	ft_push_n_times(a, b, (a->pos - finish), ops);
 
-	if ((finish - start + 1) < start)
-		ft_rotate_n_times(a, (finish - start + 1), ops);
-	else if (start != 0)
-		ft_rev_rotate_n_times(a, start, ops);
-	// print_stacks(a, b);
-	if (start)
-		ft_push_n_times(a, b, (a->pos - (finish - start)), ops);
-}
+// 	if ((finish - start + 1) < start)
+// 		ft_rotate_n_times(a, (finish - start + 1), ops);
+// 	else if (start != 0)
+// 		ft_rev_rotate_n_times(a, start, ops);
+// 	// print_stacks(a, b);
+// 	if (start)
+// 		ft_push_n_times(a, b, (a->pos - (finish - start)), ops);
+// }
 
 void			ft_new_sorting(t_stack *a, t_stack *b)
 {
@@ -139,25 +139,26 @@ void			ft_new_sorting(t_stack *a, t_stack *b)
 
 	ops = ft_init_ops((unsigned int)(a->size * 2));
 	
-	ft_split_to_b(a, b, ops);
+	// ft_split_to_b(a, b, ops);
 	// print_stacks(a, b);
-	// while (a->pos > 2)
-	// {
-	// 	if (ops->pos == (int)(ops->size - 1))
-	// 		ops->str = ft_realloc(ops->str, (size_t)(ops->size *= 2));
-	// 	ft_push_in_first(b, a);
-	// 	ops->str[(ops->pos += 1)] = PB;
-	// }
-	// if (ops->pos == (int)(ops->size - 1))
-	// 	ops->str = ft_realloc(ops->str, (size_t)(ops->size *= 2));
-	// if ((!ft_a_is_sorted(a->val, a->pos) && a->pos < 2) ||
-	// (a->min == a->pos & a->max != 0) ||
-	// (a->max == 0 && a->min != a->pos) || (a->max == a->pos && a->min == 0))
-	// {
-	// 	ops->str[(ops->pos += 1)] = SA;
-	// 	ft_swap(a);
-	// }
+	while (a->pos > 2)
+	{
+		if (ops->pos == (int)(ops->size - 1))
+			ops->str = ft_realloc(ops->str, (size_t)(ops->size *= 2));
+		ft_push_in_first(b, a);
+		ops->str[(ops->pos += 1)] = PB;
+	}
+	if (ops->pos == (int)(ops->size - 1))
+		ops->str = ft_realloc(ops->str, (size_t)(ops->size *= 2));
+	if ((!ft_a_is_sorted(a->val, a->pos) && a->pos < 2) ||
+	(a->min == a->pos & a->max != 0) ||
+	(a->max == 0 && a->min != a->pos) || (a->max == a->pos && a->min == 0))
+	{
+		ops->str[(ops->pos += 1)] = SA;
+		ft_swap(a);
+	}
 	ft_smart_insert_sort(a, b, ops);
+	ft_free_stacks(a, b);
 	ft_print_ops(ops);
 	ft_free_ops(&ops);
 }
