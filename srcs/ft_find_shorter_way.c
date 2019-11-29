@@ -23,7 +23,7 @@ void		ft_count_ops_in_a(t_stack *a, int v)
 	a->rr = j + 1;
 }
 
-int			ft_smallest_combination(t_stack *a, t_stack *b, int *r)
+static int		ft_smallest_combination(t_stack *a, t_stack *b, int *r)
 {
 	if (r[R_R] < r[RR_RR] && r[R_R] < r[R_RR] && r[R_R] < r[RR_R])
 	{
@@ -48,7 +48,7 @@ int			ft_smallest_combination(t_stack *a, t_stack *b, int *r)
 	return (r[RR_R]);
 }
 
-int			ft_count_ops(t_stack *a, t_stack *b, int p)
+static int		ft_count_ops(t_stack *a, t_stack *b, int p)
 {
 	int		r[4];
 
@@ -67,7 +67,7 @@ int			ft_count_ops(t_stack *a, t_stack *b, int p)
 	return (ft_smallest_combination(a, b, r));
 }
 
-int		ft_find_shorter_way(t_stack *a, t_stack *b)
+int				ft_find_shorter_way(t_stack *a, t_stack *b)
 {
 	int		p;
 	int		j;
