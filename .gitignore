@@ -1,3 +1,6 @@
 .DS_Store
 /objs
 *.dSYM
+*.vscode
+checker
+push_swap
