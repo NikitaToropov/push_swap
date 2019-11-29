@@ -11,7 +11,6 @@
 # define SS			3
 # define PA			4
 # define PB			5
-
 # define RA			6
 # define RB			7
 # define RR			8
@@ -19,7 +18,12 @@
 # define RRB		10
 # define RRR		11
 
-# define MXT		22
+// rotates combinations
+# define R_R		0
+# define RR_RR		1
+# define R_RR		2
+# define RR_R		3
+
 
 typedef struct		s_ops
 {

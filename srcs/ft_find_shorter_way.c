@@ -23,49 +23,48 @@ void		ft_count_ops_in_a(t_stack *a, int v)
 	a->rr = j + 1;
 }
 
+int			ft_smallest_combination(t_stack *a, t_stack *b, int *r)
+{
+	if (r[R_R] < r[RR_RR] && r[R_R] < r[R_RR] && r[R_R] < r[RR_R])
+	{
+		a->rr = 0;
+		b->rr = 0;
+		return (r[R_R]);
+	}
+	else if (r[RR_RR] < r[R_R] && r[RR_RR] < r[R_RR] && r[RR_RR] < r[RR_R])
+	{
+		a->r = 0;
+		b->r = 0;
+		return (r[RR_RR]);
+	}
+	else if (r[R_RR] < r[R_R] && r[R_RR] < r[RR_RR] && r[R_RR] < r[RR_R])
+	{
+		a->rr = 0;
+		b->r = 0;
+		return (r[R_RR]);
+	}
+	a->r = 0;
+	b->rr = 0;
+	return (r[RR_R]);
+}
+
 int			ft_count_ops(t_stack *a, t_stack *b, int p)
 {
-	int		r_r;
-	int		rr_rr;
-	int		r_rr;
-	int		rr_r;
-	int		res;
+	int		r[4];
 
 	b->r = b->pos - p;
 	b->rr = p + 1;
 	ft_count_ops_in_a(a, b->val[p]);
-	if ((r_r = b->r) < a->r)
-		r_r = a->r;
-	if ((rr_rr = b->rr) < a->rr)
-		rr_rr = a->rr;
-	r_rr = a->r + b->rr;
-	rr_r = a->rr + b->r;
-	
-	if (r_r < rr_rr && r_r < r_rr && r_r < rr_r)
-	{
-		a->rr = 0;
-		b->rr = 0;
-		res = r_r;
-	}
-	else if (rr_rr < r_r && rr_rr < r_rr && rr_rr < rr_r)
-	{
-		a->r = 0;
-		b->r = 0;
-		res = rr_rr;
-	}
-	else if (r_rr < r_r && r_rr < rr_rr && r_rr < rr_r)
-	{
-		a->rr = 0;
-		b->r = 0;
-		res = r_rr;
-	}
-	else
-	{
-		res = rr_r;
-		a->r = 0;
-		b->rr = 0;
-	}
-	return (res);
+
+
+	// if ((r_r = b->r) < a->r)
+	if ((r[R_R] = b->r) < a->r)
+		r[R_R] = a->r;
+	if ((r[RR_RR] = b->rr) < a->rr)
+		r[RR_RR] = a->rr;
+	r[R_RR] = a->r + b->rr;
+	r[RR_R] = a->rr + b->r;
+	return (ft_smallest_combination(a, b, r));
 }
 
 int		ft_find_shorter_way(t_stack *a, t_stack *b)
