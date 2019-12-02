@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ops_alloc_analyze_free.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cmissy <cmissy@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/02 12:11:05 by cmissy            #+#    #+#             */
+/*   Updated: 2019/12/02 12:11:06 by cmissy           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_push_op_n_times(t_ops *ops, char op, int n)
@@ -7,7 +19,6 @@ void	ft_push_op_n_times(t_ops *ops, char op, int n)
 		ft_push_op(ops, op);
 		n--;
 	}
-	
 }
 
 void	ft_push_op(t_ops *ops, char op)

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_find_shorter_way.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cmissy <cmissy@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/02 12:10:02 by cmissy            #+#    #+#             */
+/*   Updated: 2019/12/02 12:10:04 by cmissy           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void		ft_count_ops_in_a(t_stack *a, int v)
+void			ft_count_ops_in_a(t_stack *a, int v)
 {
 	int		i;
 	int		j;
@@ -55,9 +67,6 @@ static int		ft_count_ops(t_stack *a, t_stack *b, int p)
 	b->r = b->pos - p;
 	b->rr = p + 1;
 	ft_count_ops_in_a(a, b->val[p]);
-
-
-	// if ((r_r = b->r) < a->r)
 	if ((r[R_R] = b->r) < a->r)
 		r[R_R] = a->r;
 	if ((r[RR_RR] = b->rr) < a->rr)

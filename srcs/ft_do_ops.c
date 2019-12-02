@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_do_ops.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cmissy <cmissy@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/02 12:09:50 by cmissy            #+#    #+#             */
+/*   Updated: 2019/12/02 12:09:52 by cmissy           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int		ft_all_swaps(t_stack *a, t_stack *b, char *op)
@@ -83,9 +95,9 @@ static int		ft_all_rev_rotates(t_stack *a, t_stack *b, char *op)
 	}
 	if (!ft_strcmp(op, "rrr") || !ft_strcmp(op, "RRR"))
 	{
-		if(a->pos > 0)
+		if (a->pos > 0)
 			ft_rev_rotate(a);
-		if(b->pos > 0)
+		if (b->pos > 0)
 			ft_rev_rotate(b);
 		return (1);
 	}

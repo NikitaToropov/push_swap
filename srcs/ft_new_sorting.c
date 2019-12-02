@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_new_sorting.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cmissy <cmissy@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/02 12:11:34 by cmissy            #+#    #+#             */
+/*   Updated: 2019/12/02 12:11:54 by cmissy           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void		ft_print_sp_ops(char op)
@@ -71,7 +83,6 @@ void			ft_new_sorting(t_stack *a, t_stack *b)
 	ops = ft_init_ops((unsigned int)(2));
 	ft_push_op_n_times(ops, PB, (a->pos - 2));
 	ft_push_n_times(b, a, (a->pos - 2));
-
 	if ((!ft_a_is_sorted(a->val, a->pos) && a->pos < 2) ||
 	(a->min == a->pos & a->max != 0) ||
 	(a->max == 0 && a->min != a->pos) || (a->max == a->pos && a->min == 0))
