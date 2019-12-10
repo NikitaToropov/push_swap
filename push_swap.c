@@ -6,7 +6,7 @@
 /*   By: cmissy <cmissy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 12:27:52 by cmissy            #+#    #+#             */
-/*   Updated: 2019/12/10 11:10:05 by cmissy           ###   ########.fr       */
+/*   Updated: 2019/12/10 13:32:41 by cmissy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,5 @@ int		main(int c, char **v)
 		ft_make_two_stacks(&a, &b, arr, len);
 		ft_new_sorting(a, b);
 	}
-	else
-		write(1, "Error\n", 6);
 	return (0);
 }

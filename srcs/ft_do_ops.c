@@ -6,7 +6,7 @@
 /*   By: cmissy <cmissy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 12:09:50 by cmissy            #+#    #+#             */
-/*   Updated: 2019/12/03 13:34:52 by cmissy           ###   ########.fr       */
+/*   Updated: 2019/12/10 13:29:24 by cmissy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void			ft_do_ops(t_stack *a, t_stack *b)
 {
 	char		*op;
 
-	while (ft_get_next_line(0, &op))
+	while (get_next_line(0, &op))
 	{
 		if (ft_all_swaps(a, b, op) || ft_all_pushes(a, b, op) ||
 		ft_all_rotates(a, b, op) || ft_all_rev_rotates(a, b, op))
