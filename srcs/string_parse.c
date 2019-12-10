@@ -6,22 +6,11 @@
 /*   By: cmissy <cmissy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 12:11:20 by cmissy            #+#    #+#             */
-/*   Updated: 2019/12/10 11:08:47 by cmissy           ###   ########.fr       */
+/*   Updated: 2019/12/10 11:23:13 by cmissy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_arr(int *arr, int len)
-{
-	int i = 0;
-	
-	while (i < len)
-	{
-		printf("%d|", arr[i]);
-		i++;
-	}
-}
 
 static int		*ft_free_and_return_null(int **i)
 {
@@ -55,16 +44,12 @@ static int		ft_len_int_arr(char *str)
 	pipes = 0;
 	while (*str)
 	{
-	// printf("%s\n", str);
-
 		while (ft_isspace(*str))
 			str++;
 		if (*str == '+' || *str == '-')
 			str++;
-		if (!*str ||	 (*str < '0' || *str > '9'))
-		{
+		if (!*str || (*str < '0' || *str > '9'))
 			return (0);
-		}
 		if (*str >= '0' && *str <= '9')
 			i++;
 		while ((*str >= '0' && *str <= '9'))
@@ -84,11 +69,7 @@ int				*ft_int_arr(char *str, int *len)
 
 	if (!(*len = ft_len_int_arr(str)) ||
 	(!(arr = (int*)malloc(sizeof(int) * *len))))
-	{
 		return (NULL);
-	}
-	// printf("%s\n", str);
-	// printf("len = %i\n", *len);
 	i = *len - 1;
 	while (*str && i >= 0)
 	{
@@ -97,8 +78,7 @@ int				*ft_int_arr(char *str, int *len)
 		if (((arr[i] = ft_atoi(str)) == -1 && *str != '-') ||
 		(arr[i] == 0 && *str == '-'))
 			return (ft_free_and_return_null(&arr));
-		else
-			i--;
+		i--;
 		while (*str && !ft_isspace(*str))
 			str++;
 		while (ft_isspace(*str))
@@ -106,7 +86,6 @@ int				*ft_int_arr(char *str, int *len)
 		if (*str == '|')
 			str++;
 	}
-	// print_arr(arr, *len);
 	if (ft_dup_detector(arr, *len))
 		return (ft_free_and_return_null(&arr));
 	return (arr);

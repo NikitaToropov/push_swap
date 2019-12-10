@@ -6,7 +6,7 @@
 /*   By: cmissy <cmissy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 12:26:25 by cmissy            #+#    #+#             */
-/*   Updated: 2019/12/10 09:47:08 by cmissy           ###   ########.fr       */
+/*   Updated: 2019/12/10 11:15:26 by cmissy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,5 @@ void				ft_push_op(t_ops *ops, char op);
 t_ops				*ft_init_ops(unsigned int len);
 void				ft_free_ops(t_ops **ops);
 void				ft_do_ops(t_stack *a, t_stack *b);
-void			print_stacks(t_stack *a, t_stack *b);
-void	print_arr(int *arr, int len);
-
 
 #endif

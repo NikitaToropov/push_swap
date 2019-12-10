@@ -6,7 +6,7 @@
 /*   By: cmissy <cmissy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 12:11:05 by cmissy            #+#    #+#             */
-/*   Updated: 2019/12/10 08:42:52 by cmissy           ###   ########.fr       */
+/*   Updated: 2019/12/10 11:22:38 by cmissy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_push_op_n_times(t_ops *ops, char op, int n)
 {
-
 	while (n > 0)
 	{
 		ft_push_op(ops, op);
