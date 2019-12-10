@@ -6,7 +6,7 @@
 /*   By: cmissy <cmissy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 12:11:16 by cmissy            #+#    #+#             */
-/*   Updated: 2019/12/02 12:11:16 by cmissy           ###   ########.fr       */
+/*   Updated: 2019/12/10 08:45:01 by cmissy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int				ft_rotate(t_stack *s)
 
 void			ft_rotate_n_times(t_stack *s, int n)
 {
-	while (n && ft_rotate(s))
+	while (n > 0  && ft_rotate(s))
 		n--;
 }
 
@@ -69,6 +69,6 @@ int				ft_rev_rotate(t_stack *s)
 
 void			ft_rev_rotate_n_times(t_stack *s, int n)
 {
-	while (n && ft_rev_rotate(s))
+	while (n > 0 && ft_rev_rotate(s))
 		n--;
 }

@@ -6,7 +6,7 @@
 /*   By: cmissy <cmissy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 12:28:02 by cmissy            #+#    #+#             */
-/*   Updated: 2019/12/02 12:28:02 by cmissy           ###   ########.fr       */
+/*   Updated: 2019/12/10 11:10:48 by cmissy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		main(int c, char **v)
 	{
 		len = 2;
 		while (len < c)
-			str = ft_strjoin_free(str, ft_strjoin(" ", v[len++]));
+			str = ft_strjoin_free(str, ft_strjoin("| ", v[len++]));
 		if (!(arr = ft_int_arr(str, &len)))
 		{
 			free(str);
@@ -36,5 +36,7 @@ int		main(int c, char **v)
 		ft_do_ops(a, b);
 		ft_free_stacks(a, b);
 	}
+	else
+		write(1, "Error\n", 6);
 	return (0);
 }

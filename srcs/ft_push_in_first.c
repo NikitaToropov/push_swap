@@ -6,7 +6,7 @@
 /*   By: cmissy <cmissy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 12:10:36 by cmissy            #+#    #+#             */
-/*   Updated: 2019/12/02 12:10:37 by cmissy           ###   ########.fr       */
+/*   Updated: 2019/12/10 08:43:23 by cmissy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int			ft_push_in_first(t_stack *a, t_stack *b)
 
 void		ft_push_n_times(t_stack *a, t_stack *b, int n)
 {
-	while (n)
+	while (n > 0)
 	{
 		ft_push_in_first(a, b);
 		n--;

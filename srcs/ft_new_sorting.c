@@ -6,11 +6,32 @@
 /*   By: cmissy <cmissy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 12:11:34 by cmissy            #+#    #+#             */
-/*   Updated: 2019/12/02 12:11:54 by cmissy           ###   ########.fr       */
+/*   Updated: 2019/12/10 10:13:25 by cmissy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void			print_stacks(t_stack *a, t_stack *b)
+{
+	int			i;
+	
+	printf("+++++++++++ JUST DELIMETER +++++++++\n");
+	i = a->size - 1;
+	while (i >= 0)
+	{
+		printf("%-8i%-5i%i\n", i, a->val[i], b->val[i]);
+		i--;
+	}
+	printf("-----------------------------------\n");
+	printf("max     %-5i%i\n", a->max, b->max);
+	printf("min     %-5i%i\n", a->min, b->min);
+	printf("size    %-5i%i\n", a->size, b->size);
+	printf("pos     %-5i%i\n", a->pos, b->pos);
+	printf("r       %-5i%i\n", a->r, b->r);
+	printf("rr      %-5i%i\n", a->rr, b->rr);
+	printf("====================================\n");
+}
 
 static void		ft_print_sp_ops(char op)
 {
@@ -55,27 +76,6 @@ static void		ft_print_ops(t_ops *ops)
 	}
 }
 
-void			print_stacks(t_stack *a, t_stack *b)
-{
-	int			i;
-
-	printf("+++++++++++ JUST DELIMETER +++++++++\n");
-	i = a->size - 1;
-	while (i >= 0)
-	{
-		printf("%-8i%-5i%i\n", i, a->val[i], b->val[i]);
-		i--;
-	}
-	printf("-----------------------------------\n");
-	printf("max     %-5i%i\n", a->max, b->max);
-	printf("min     %-5i%i\n", a->min, b->min);
-	printf("size    %-5i%i\n", a->size, b->size);
-	printf("pos     %-5i%i\n", a->pos, b->pos);
-	printf("r       %-5i%i\n", a->r, b->r);
-	printf("rr      %-5i%i\n", a->rr, b->rr);
-	printf("====================================\n");
-}
-
 void			ft_new_sorting(t_stack *a, t_stack *b)
 {
 	t_ops		*ops;
@@ -83,15 +83,18 @@ void			ft_new_sorting(t_stack *a, t_stack *b)
 	ops = ft_init_ops((unsigned int)(2));
 	ft_push_op_n_times(ops, PB, (a->pos - 2));
 	ft_push_n_times(b, a, (a->pos - 2));
+
 	if ((!ft_a_is_sorted(a->val, a->pos) && a->pos < 2) ||
 	(a->min == a->pos & a->max != 0) ||
 	(a->max == 0 && a->min != a->pos) || (a->max == a->pos && a->min == 0))
 	{
+		if (ft_a_is_sorted(a->val, a->pos))
+			write(1, "YOUY\n", 5);
 		ft_push_op(ops, SA);
 		ft_swap(a);
 	}
 	ft_smart_insert_sort(a, b, ops);
-	ft_free_stacks(a, b);
+	ft_free_stacks(a, b);	
 	ft_print_ops(ops);
 	ft_free_ops(&ops);
 }
